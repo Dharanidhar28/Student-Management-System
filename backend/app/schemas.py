@@ -1,3 +1,4 @@
+
 from pydantic import BaseModel, EmailStr, Field
 from datetime import datetime
 from pydantic import BaseModel
@@ -18,6 +19,9 @@ class Student(BaseModel):
     course: str
     enrollment_date: datetime
 
+class studentListResponse(BaseModel):
+    students: list[Student]
+    total: int  
 
 class UserLogin(BaseModel):
     email: str

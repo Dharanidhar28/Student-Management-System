@@ -16,12 +16,12 @@ def create_student(student: schemas.StudentCreate,db: Session = Depends(get_db),
     return crud.create_student(student, db)
 
 
-@router.get("/", response_model=List[schemas.Student])
+@router.get("/", response_model=schemas.studentListResponse)
 def get_students(skip: int = Query(0, ge = 0),
                           limit: int = Query(10, le = 100),
                           course: str | None = None ,
                           age : int | None = Query(None, ge = 0),
-                          sort_by: str | None = Query(None, regex="^(name|age|course)$"),
+                          sort_by: str | None = Query(None, regex = "^(name|age|course)$"),
                           db: Session = Depends(get_db)):
      return crud.get_students(skip, limit, course, age, sort_by, db)
 

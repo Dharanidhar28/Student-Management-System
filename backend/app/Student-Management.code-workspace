@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "../../Student-Management-frontend"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Student-Management-frontend",
+
+		"editor.formatOnSave": true,
+
+    "[python]": {
+      "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+	}
+}
