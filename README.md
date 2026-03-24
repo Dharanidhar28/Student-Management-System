@@ -117,7 +117,9 @@ http://127.0.0.1:8000/docs
 Open:
 
 ```
-frontend/index.html
+frontend/login.html
+username:admin@example.com
+password:1234
 ```
 
 or run using Live Server in VS Code.
@@ -148,5 +150,5 @@ or run using Live Server in VS Code.
 ## 👨‍💻 Author
 
 Dharanidhar Kotha
-GitHub: https://github.com/yourusername
+GitHub: https://github.com/Dharanidhar28
 
