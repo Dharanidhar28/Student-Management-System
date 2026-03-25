@@ -2,7 +2,7 @@
 # models.py
 from sqlalchemy import Column, Integer, String, DateTime
 from datetime import datetime
-from app.database import Base
+from backend.app.database import Base
 
 class Student(Base):
      __tablename__ = "students"

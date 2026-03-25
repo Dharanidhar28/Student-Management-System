@@ -3,11 +3,11 @@ from unittest import skip
 
 from fastapi import FastAPI,Depends, HTTPException, Query
 from sqlalchemy.orm import Session
-from app.database import get_db
-import app.models as models
-from app.routers import students
-from app.routers import students
-import app.schemas as schemas
+from backend.app.database import get_db
+import backend.app.models as models
+from backend.app.routers import students
+from backend.app.routers import students
+import backend.app.schemas as schemas
 
 
 
