@@ -2,10 +2,10 @@ from typing import List
 
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
-import app.crud as crud 
-import app.schemas as schemas
-from app.database import get_db
-from app.dependencies import oauth2_scheme
+import backend.app.crud as crud 
+import backend.app.schemas as schemas
+from backend.app.database import get_db
+from backend.app.dependencies import oauth2_scheme
 
 router = APIRouter(prefix="/students", tags=["Students"])
 
