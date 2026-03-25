@@ -18,6 +18,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+import os
+
+port = int(os.environ.get("PORT", 10000))
+
 Base.metadata.create_all(bind=engine)
 
 
