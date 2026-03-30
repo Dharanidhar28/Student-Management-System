@@ -1,6 +1,4 @@
 import { apiRequest } from "./api_helper.js";
-const API = "http://127.0.0.1:8000/students/";
-const token = localStorage.getItem("token");
 
 let allstudents = [];
 
@@ -14,7 +12,7 @@ async function loadStudents(page = 1) {
 		currentPage = page;
 		const skip = (currentPage - 1) * limit;
 		const students = await apiRequest(`/students/?skip=${skip}&limit=${limit}`);
-		allstudents = students;
+		allstudents = students.students;
 		
 		displayStudents(students.students);
 
