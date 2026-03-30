@@ -88,7 +88,8 @@ window.location.href="index.html";
 
 }else{
 
-throw new Error("Login response did not include an access token.");
+const preview = rawBody ? rawBody.slice(0, 200) : "[empty body]";
+throw new Error(`Login response did not include an access token. Status: ${res.status}. Response: ${preview}`);
 }
 } catch (error) {
 console.error("Login error:", error);
