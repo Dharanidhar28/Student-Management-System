@@ -37,6 +37,8 @@ Login
 
 </div>
 
+<script src="config.js"></script>
+
 <script>
 
 async function login(){
@@ -49,7 +51,7 @@ const formData = new URLSearchParams();
 formData.append("username", username);
 formData.append("password", password);
 
-const res = await fetch("http://127.0.0.1:8000/login",{
+const res = await fetch(`${window.APP_CONFIG.getApiBase()}/login`,{
 
 method:"POST",
 
