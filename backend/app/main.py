@@ -23,11 +23,11 @@ app.add_middleware(
 )
 
 
-app.mount("/static", StaticFiles(directory="frontend"), name="static")
+app.mount("/static", StaticFiles(directory="../../frontend"), name="static")
 
 @app.get("/")
 def read_root():
-    return FileResponse("frontend/login.html")
+    return FileResponse("../../frontend/login.html")
 
 
 import os
