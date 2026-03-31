@@ -1,5 +1,5 @@
 import { apiRequest } from "./api_helper.js";
-const API = "http://127.0.0.1:8000/students/";
+const API = "https://student-management-system-t3gh.onrender.com/students/";
 const token = localStorage.getItem("token");
 
 let allstudents = [];

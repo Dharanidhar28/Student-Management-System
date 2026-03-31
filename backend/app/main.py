@@ -6,6 +6,10 @@ from backend.app.database import engine
 from backend.app.models import Base
 from backend.app.routers import auth
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+
+
 
 app = FastAPI()
 
@@ -17,6 +21,14 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+app.mount("/frontend", StaticFiles(directory="frontend"), name="frontend")
+
+@app.get("/")
+def read_root():
+    return FileResponse("frontend/login.html")
+
 
 import os
 
