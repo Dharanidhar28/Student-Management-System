@@ -1,5 +1,5 @@
 import { apiRequest } from "./api_helper.js";
-const API = "https://student-management-system-t3gh.onrender.com/students/";
+const API = "/students/";
 const token = localStorage.getItem("token");
 
 let allstudents = [];
@@ -41,7 +41,7 @@ async function loadStudents(page = 1) {
 }
 
 if (!localStorage.getItem("token")) {
-	window.location.href = "login.html";
+	window.location.href = "/static/login.html";
 }
 
 function renderPagination() {
@@ -248,7 +248,7 @@ async function updateStudent(id) {
 function logout() {
 	localStorage.removeItem("token");
 
-	window.location.href = "login.html";
+	window.location.href = "/";
 }
 
 function showToast(message) {
