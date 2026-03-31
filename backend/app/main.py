@@ -23,7 +23,7 @@ app.add_middleware(
 )
 
 
-app.mount("/static", StaticFiles(directory="frontend"), name="frontend")
+app.mount("/static", StaticFiles(directory="frontend"), name="static")
 
 @app.get("/")
 def read_root():
