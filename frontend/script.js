@@ -1,6 +1,4 @@
 import { apiRequest } from "./api_helper.js";
-const API = "/students/";
-const token = localStorage.getItem("token");
 
 let allstudents = [];
 
@@ -14,7 +12,7 @@ async function loadStudents(page = 1) {
 		currentPage = page;
 		const skip = (currentPage - 1) * limit;
 		const students = await apiRequest(`/students/?skip=${skip}&limit=${limit}`);
-		allstudents = students;
+		allstudents = students.students;
 		
 		displayStudents(students.students);
 
@@ -54,6 +52,10 @@ function renderPagination() {
 
 	let totalPages = Math.ceil(totalStudents / limit);
 
+	if (totalPages <= 1) {
+		return;
+	}
+
 	for (let i = 1; i <= totalPages; i++) {
 
 		pagination.innerHTML += `
@@ -77,30 +79,41 @@ async function displayStudents(students) {
 
 		table.innerHTML = "";
 
+		if (!students.length) {
+			table.innerHTML = `
+				<tr>
+					<td class="empty-state" colspan="6">No students found</td>
+				</tr>
+			`;
+			return;
+		}
+
 		students.forEach((student) => {
 			table.innerHTML += `
 
             <tr>
 
             <td>${student.id}</td>
-            <td>${student.name}</td>
+            <td><span class="student-name">${student.name}</span></td>
             <td>${student.email}</td>
             <td>${student.age}</td>
-            <td>${student.course}</td>
+            <td><span class="course-pill">${student.course}</span></td>
 
-            <td>
+            <td class="text-end">
+            <div class="action-group">
 
-            <button class="btn btn-warning btn-sm"
+            <button class="btn btn-soft btn-sm"
             onclick="editStudent(${student.id})">
             Edit
             </button>
 
 
-            <button class="btn btn-danger btn-sm"
+            <button class="btn btn-soft-danger btn-sm"
             onclick="deleteStudent(${student.id})">
             Delete
             </button>
 
+            </div>
            </td>
 
            </tr>
@@ -120,10 +133,15 @@ async function addStudent() {
 
 		const course = document.getElementById("course").value;
 
-		const data = await apiRequest("/students/", {
+		await apiRequest("/students/", {
 			method: "POST",
 			body: JSON.stringify({ name, age, course, email }),
 		});
+
+		const modal = bootstrap.Modal.getInstance(
+			document.getElementById("addModal"),
+		);
+		modal.hide();
 
 		showToast("Student added successfully");
 
@@ -139,13 +157,21 @@ function searchStudents() {
 	const keyword = document.getElementById("searchInput").value.toLowerCase();
 
 	const filteredStudents = allstudents.filter((student) =>
-		student.name.toLowerCase().includes(keyword),
+		[student.name, student.email, student.course]
+			.join(" ")
+			.toLowerCase()
+			.includes(keyword),
 	);
 
 	displayStudents(filteredStudents);
 }
 
 function sortStudents(field) {
+	if (!field) {
+		displayStudents(allstudents);
+		return;
+	}
+
 	let sortedStudents = [...allstudents];
 
 	sortedStudents.sort((a, b) => {

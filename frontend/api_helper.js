@@ -1,4 +1,4 @@
-const API_BASE = "https://student-management-system-t3gh.onrender.com";
+const API_BASE = "";
 const token = localStorage.getItem("token");
 
 export async function apiRequest(endpoint, options = {}) {
