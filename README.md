@@ -234,5 +234,88 @@ Then serve the frontend with a static server or VS Code Live Server.
 
 ## Author
 
+<<<<<<< HEAD
 Dharanidhar Kotha  
+=======
+```bash
+git clone https://github.com/yourusername/student-management-system.git
+cd student-management-system
+```
+
+### 2️⃣ Setup Backend
+
+```bash
+cd backend
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+Run server:
+
+```bash
+uvicorn app.main:app --reload
+```
+
+Backend runs at:
+
+```
+http://127.0.0.1:8000
+```
+
+Swagger Docs:
+
+```
+http://127.0.0.1:8000/docs
+```
+
+---
+
+### 3️⃣ Run Frontend
+
+Open:
+
+```
+frontend/login.html
+username:admin@example.com
+password:1234
+```
+
+or run using Live Server in VS Code.
+
+---
+
+## 📡 API Endpoints
+
+| Method | Endpoint       | Description    |
+| ------ | -------------- | -------------- |
+| POST   | /login         | User login     |
+| GET    | /students      | Get students   |
+| POST   | /students      | Add student    |
+| PUT    | /students/{id} | Update student |
+| DELETE | /students/{id} | Delete student |
+
+---
+
+## 📌 Future Improvements
+
+* Add role-based authentication
+* Export students to CSV
+
+---
+## Live Demo
+
+Frontend:
+https://student-management-system-t3gh.onrender.com
+
+username:admin@example.com
+password:1234
+
+API Docs:
+https://student-management-system-t3gh.onrender.com/docs
+
+## 👨‍💻 Author
+
+Dharanidhar Kotha
+>>>>>>> e1f9751a7007af46c3270e348e8fb66448d3ab7f
 GitHub: https://github.com/Dharanidhar28
