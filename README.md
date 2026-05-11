@@ -47,6 +47,7 @@ DevOps:
 
 - Docker
 - Docker Compose
+- GitHub Actions CI/CD
 
 ## Project Structure
 
@@ -64,10 +65,42 @@ student-management-system/
 |   +-- style.css
 |   +-- nginx.conf
 |   +-- Dockerfile
++-- .github/
+|   +-- workflows/
+|       +-- ci-cd.yml
 +-- docker-compose.yml
 +-- .dockerignore
 +-- README.md
 ```
+
+## CI/CD Pipeline
+
+This project includes a GitHub Actions workflow at `.github/workflows/ci-cd.yml`.
+
+The CI pipeline runs on every push and pull request to `main` or `master`. It:
+
+- installs backend dependencies
+- checks Python dependency compatibility
+- compiles the backend code
+- imports the FastAPI app
+- builds the backend and frontend Docker images
+- starts the full Docker Compose application
+- smoke tests the backend docs page and frontend login page
+
+The CD pipeline runs only after CI passes on a push to `main` or `master`. It can trigger a Render deployment if this GitHub repository secret is configured:
+
+```text
+RENDER_DEPLOY_HOOK_URL
+```
+
+To add the secret in GitHub:
+
+1. Open the GitHub repository.
+2. Go to Settings -> Secrets and variables -> Actions.
+3. Create a new repository secret named `RENDER_DEPLOY_HOOK_URL`.
+4. Paste the deploy hook URL from Render.
+
+If the secret is not configured, the deploy job safely skips deployment.
 
 ## Run With Docker Compose
 
@@ -238,7 +271,7 @@ Then serve the frontend with a static server or VS Code Live Server.
 Dharanidhar Kotha  
 =======
 ```bash
-git clone https://github.com/yourusername/student-management-system.git
+git clone https://github.com/Dharanidhar28/student-management-system.git
 cd student-management-system
 ```
 
