@@ -231,31 +231,6 @@ Then serve the frontend with a static server or VS Code Live Server.
 - Improved search, sorting, table empty state, and action button styling.
 - Updated Docker ignore rules to keep images smaller.
 
-## Screenshots
-
-### Login
-
-![Login Screenshot](Screenshots/Login_page.png)
-
-### Dashboard
-
-![Dashboard Screenshot](Screenshots/dashboard.png)
-
-### Add Student
-
-![Add Student](Screenshots/addStudent.png)
-
-### Edit Student
-
-![Edit Student](Screenshots/EditStudent.png)
-
-### Search Student
-
-![Search Screenshot](Screenshots/search.png)
-
-### Sort Student
-
-![Sort Screenshot](Screenshots/sorting.png)
 
 ## Future Improvements
 
